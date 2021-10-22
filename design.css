@@ -1,0 +1,112 @@
+
+            html {
+                     scroll-behavior: smooth;
+                 }
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+                
+            }
+        
+            .head{
+                text-align: center;
+                margin-top: 10px;
+                border-radius: 5px;
+                padding-top: 5px;
+                border: 2px solid black;
+                box-shadow: 5px 5px #C8C8C8;
+                 
+            }
+            .head1 h5{
+                padding-top: 10px;
+            }
+            img{
+                border: 2px solid black;
+            }
+            .menu{
+                display: flex;
+                justify-content: space-around;
+                margin-top: 40px;
+                border: 2px solid black;
+                padding: 20px 0px;
+                box-shadow: 5px 10px #C8C8C8;
+                border-radius: 5px;
+                
+                
+            }
+            .menu h3{
+                text-align: center;
+                padding-top: 50px;
+            }
+            .bord1{
+                background-color:#ffbf00;
+                padding: 10px 20px;
+                border-radius: 10px;
+            }
+              .bord2{
+                background-color:#0080ff;
+                padding: 10px 20px;
+                border-radius: 10px;
+            }
+              .bord3{
+                background-color:#80ff00;
+                padding: 10px 25px;
+                border-radius: 10px;
+            }
+              .bord4{
+                background-color:#ff4000;
+                padding: 10px 25px;
+                border-radius: 10px;
+            }
+            footer{
+                text-align: center;
+                background-color:black;
+                font-size: 20px;
+                color: white;
+                margin-top: 20px;
+                padding: 10px 0px;
+                border-radius: 5px;
+            }
+            P{
+                font-weight: bold;
+                font-size: 40px;
+            }
+            .btn1{
+                bottom: 5px;
+                right: 20px;
+                z-index: 99;
+                position: fixed;
+                
+            }
+            th{
+                background-color: #383838;
+                color: white;
+            }
+            #table1 tbody tr:hover{
+                background-color: #ddff99;
+                border: 1px solid black;
+            }
+            @media only screen and (max-width:1000px){
+                .menu{
+                    display: block;
+                    box-shadow: 5px 15px #C8C8C8;
+                }
+                .menu h3{
+                    padding-top: 0px;
+                }
+                .head1 h5{
+                   font-size: 17px;
+                }
+                .bord1,.bord2,.bord3,.bord4{
+                    margin: 5px 5px;
+                    text-align: center;
+                    border: 1px solid black;
+                    
+                }
+                .about img{
+                    width: 100%;
+                } 
+            }
+          
+            

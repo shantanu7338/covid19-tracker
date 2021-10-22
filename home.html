@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            json
+        </title>
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+           
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="tracker.js"></script>
+         <link rel="stylesheet" href="design.css">     
+        <script>
+            fetch("https://api.covid19api.com/summary").then((apidata)=>{
+                //console.log(apidata);
+                return apidata.json();
+            }).then((actualdata)=>{
+                console.log(actualdata);
+                var date=actualdata.Date;
+                var mydata1,mydata2,mydata3,mydata4,mydata5,mydata6,mydata7,mydata8,mydata9,mydata10,mydata11;
+                //india
+                
+              //  mydata1=actualdata.Countries[76].NewConfirmed;
+                mydata2=actualdata.Countries[76].TotalConfirmed;
+                mydata3=actualdata.Countries[76].TotalRecovered;
+                mydata4=actualdata.Countries[76].TotalDeaths;
+                document.getElementById("update").innerHTML=date;
+                 document.getElementById("1").innerHTML=mydata2-mydata3;
+                 document.getElementById("2").innerHTML=mydata2;
+                 document.getElementById("3").innerHTML=mydata3;
+                 document.getElementById("4").innerHTML=mydata4;;
+               
+                //global
+                mydata5=actualdata.Global.NewConfirmed;
+                mydata6=actualdata.Global.TotalConfirmed;
+                mydata7=actualdata.Global.TotalRecovered;
+                mydata8=actualdata.Global.TotalDeaths;
+                document.getElementById("5").innerHTML=mydata5;
+                document.getElementById("6").innerHTML=mydata6;
+                document.getElementById("7").innerHTML=mydata7;
+                document.getElementById("8").innerHTML=mydata8;
+               //india today
+                mydata9=actualdata.Countries[76].NewConfirmed;
+                mydata10=actualdata.Countries[76].NewRecovered;
+                mydata11=actualdata.Countries[76].NewDeaths;
+                
+                document.getElementById("9").innerHTML=mydata9;
+                document.getElementById("10").innerHTML=mydata10;
+                document.getElementById("11").innerHTML=mydata11;
+                
+                
+            })
+        </script>
+
+        
+    </head>
+    <body onload="table1()">
+        <div class="container-fluid">
+            <!-- navbar-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2  border border-dark sticky-top">
+                <span class="navbar-brand text-capitalize">india live updates</span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item active rounded px-2">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#expand1">Global Updates</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Latest Update
+                </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+            </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#about">About Us</a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#contact">Contact Us</a>
+            </li>
+            </ul>
+    
+            </div>
+            </nav>
+            <!--navbar-->
+            
+             <div class="btn1">
+                <i class="fa fa-angle-up" style="font-size: 40px;color: white;background-color:orange;cursor: pointer;
+                padding: 0px 10px;margin-top: 5px; border-radius: 5px;z-index: 99;display:none;" onclick="scrolltop()" title="go to top" id="mybtn"></i>
+            </div>
+        <div class="head">
+        <img src="flag.png">
+        <h1 id="country">India</h1>
+        </div>
+        <div class="head1">
+            <h5>Last Updated Date and Time:&nbsp;&nbsp;<span id="update"></span></h5>
+            
+        </div>
+            
+              <div class="menu">
+                <h3>Today</h3>
+        <div class="bord1">
+            <h4>New Confirmed</h4>
+            <p id="9" class="num"></p>
+        </div>
+         
+          <div class="bord3">
+            <h4>New Recoverd</h4>
+            <p id="10" class="num"></p>
+        </div>
+         <div class="bord4">
+            <h4>New Deats</h4>
+            <p id="11" class="num"></p>
+        </div>
+        </div>
+        <div class="menu">
+            <h3>India</h3>
+        <div class="bord1">
+            <h4>Total Active</h4>
+            <p id="1" class="num"></p>
+        </div>
+         <div class="bord2">
+            <h4>Total Confirmed</h4>
+            <p id="2" class="num"></p>
+        </div>
+          <div class="bord3">
+            <h4>Total Recoverd</h4>
+            <p id="3" class="num"></p>
+        </div>
+         <div class="bord4">
+            <h4>Total Deats</h4>
+            <p id="4" class="num"></p>
+        </div>
+        </div>
+            <div class="menu">
+                <h3>Global</h3>
+        <div class="bord1">
+            <h4>New Confirmed</h4>
+            <p id="5" class="num"></p>
+        </div>
+         <div class="bord2">
+            <h4>Total Confirmed</h4>
+            <p id="6" class="num"></p>
+        </div>
+          <div class="bord3">
+            <h4>Total Recoverd</h4>
+            <p id="7" class="num"></p>
+        </div>
+         <div class="bord4">
+            <h4>Total Deats</h4>
+            <p id="8" class="num"></p>
+        </div>
+        </div>
+           
+           <div class="table1 table-responsive">
+                <h3 class="text-center my-3" id="expand1">World Live Updates</h3>
+               <div class="input-group my-2 ">
+                   <div class="input-group-prepend">
+                       <i class="fa fa-search input-group-text pt-2 " aria-hidden="true" id="icon"></i>
+                   </div>
+                 
+                   <input type="text" class="form-control" placeholder="Search country" aria-describedby="icon" id="search">
+                     <div class="input-group-append">
+                       <button class="btn btn-dark" id="search1">Search</button>
+                   </div>
+               </div>
+               <table class="table text-center table-bordered table-striped" id="table1" >
+                   <thead>
+                   <tr>
+                       <th>Sr No <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>Country <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>New Confirmed <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>New Deaths <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>New Recoverd <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>Total Confirmed <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>Total Deaths <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>Total Recoverd <i class="fa fa-sort" aria-hidden="true"></i></th> 
+                   </tr>
+                   </thead>
+                   <tbody id="table2">
+                      
+                   </tbody>
+               </table>
+            </div>
+            <div class="about" id="about">
+                <h3 class="text-center text-capitalize">about us</h3>
+                <div class="row mt-3 ">
+                    <div class="col-sm">
+                        <img src="https://www.boomlive.in/h-upload/2020/04/15/919757-aarogya-setu-app--information.jpg" width="600px" height="250px"> 
+                    </div>
+                    <div class="col">
+                        <h4>Aarogya Setu</h4>
+                        <span class="text-justify">
+                            Aarogya Setu app has been made compulsory for airline passengers as per the Standard Operating Procedure (SOP) issued by the Airports Authority of India (AAI). This comes after domestic flights were announced to resume from May 25 by the Civil Aviation Ministry. The guideline is a part of SOP that have been issued to airlines and airport operators before the passenger airlines start to operate again. Apart from the use of the app, the use of masks and gloves, and thermal screening of passengers will also be mandatory“All departing passengers must compulsorily be registered with ‘Aarogya Setu' app on their mobiles and the same shall be verified by CISF/Airport staff at the entry gate,” AAI document reads.</span>
+                    </div>
+                </div>
+                <h3 class="text-center mt-2">Aarogya Setu App Uses</h3>
+                <div class="row ">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-2">
+                        <figure>
+                        <img src="https://jan-sampark.nic.in/campaigns/2020/04-Apr/Arogya/images/Aarogya-Setu-1.jpg"  width="600px" height="600px" >
+                        </figure>
+                    </div>
+                    <div class=" col-12 col-sm-12 col-md-6 col-lg-6 mt-2">
+                        <figure>
+                        <img src="https://img.theweek.in/content/dam/week/news/sci-tech/images/2020/4/17/aarogya-setu.jpg" height="600px" width="640px">
+                        </figure>
+                    </div>
+                   
+                </div>
+                <div class="row">
+                     <div class="col-12 col-sm-12 col-md-6  col-lg-6 mt-2">
+                        <img src="https://jan-sampark.nic.in/campaigns/2020/04-Apr/Arogya/images/Aarogya-Setu-2.jpg" width="600px" height="600px">
+                    </div>
+                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-2">
+                        <img src="https://akm-img-a-in.tosshub.com/sites/btmt/images/stories//Newstaffpics/pointers_040520061116.jpg" width="640px" height="600px">
+                    </div>
+                </div>
+            </div>
+            <div class="contact mt-3" id="contact">
+                <h3 class="text-center">Contact Us</h3>
+                
+                <div class="container-fluid">
+                <div class="row bg-warning py-3">
+                    <div class="col-xs-12 ml-4">
+                        <strong> Helpline Number :+91-11-23978046</strong>
+                    </div>
+                     <div class="col-xs-12 ml-4">
+                         <strong> Toll Free : 1075</strong>
+                    </div>
+                     <div class="col-xs-12 ml-4">
+                         <strong>Helpline Email ID <a href="ncov2019@gov.in" style="color: black;font-weight: bold;">ncov2019@gov.in</a> </strong>
+                    </div>
+                     <div class="col-xs-12 ml-4">
+                       <a href="https://www.mohfw.gov.in/pdf/StatewiseCovidHospitalslink19062020.pdf" target="_blank" style="text-decoration: none;color: black; font-weight: bold;">View statewise and unoinwise Pdf</a>
+                    </div>
+                    <div class="col-xs-12 ml-4">
+                       <strong>Arogya Setu</strong>
+                        <img src="https://www.mohfw.gov.in/pdf/arogya.png" style="border: none"><strong>App</strong>
+                        <a href="http://bit.ly/AarogyaSetu_PS" title="Android"><img src="https://www.mohfw.gov.in/pdf/android.png" style="border: none"></a>
+                        <a href="https://apple.co/2X1KMzO" title="iphone"><img src="https://www.mohfw.gov.in/pdf/apple.png" style="border: none"></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <footer>© 2020 copyright reserved </footer>
+        </div>
+        <script>
+            //scroll button
+        var mybutton=document.getElementById("mybtn");
+          function scrolltop(){
+              document.body.scrollTop=0;
+              document.documentElement.scrollTop=0;
+          }
+            window.onscroll=function(){
+                scroll();
+            }
+            function scroll(){
+                if(document.body.scrollTop>20 || document.documentElement.scrollTop>20 ){
+                    mybutton.style.display="block";
+                    
+                }
+                else{
+                    mybutton.style.display="none";
+                }
+            }
+        </script>
+        <script>
+            //world live update
+            function table1(){
+                $.get("https://api.covid19api.com/summary",
+                     function(data1){
+                    //console.log(data1['Countries'].length);
+                    var table2=document.getElementById('table2');
+                    for(var i=1;i<(data1['Countries'].length);i++){
+                        var x=table2.insertRow();
+                        x.insertCell(0);
+                        table2.rows[i-1].cells[0].innerHTML=i;
+                        x.insertCell(1);
+                        table2.rows[i-1].cells[1].innerHTML=data1['Countries'][i-1]['Country'];
+                        
+                        x.insertCell(2);
+                        table2.rows[i-1].cells[2].innerHTML=data1['Countries'][i-1]['NewConfirmed'];
+                        
+                        x.insertCell(3);
+                        table2.rows[i-1].cells[3].innerHTML=data1['Countries'][i-1]['NewDeaths'];
+                        
+                        x.insertCell(4);
+                        table2.rows[i-1].cells[4].innerHTML=data1['Countries'][i-1]['NewRecovered'];
+                        
+                        x.insertCell(5);
+                        table2.rows[i-1].cells[5].innerHTML=data1['Countries'][i-1]['TotalConfirmed'];
+                        
+                        x.insertCell(6);
+                        table2.rows[i-1].cells[6].innerHTML=data1['Countries'][i-1]['TotalDeaths'];
+                        
+                        x.insertCell(7);
+                        table2.rows[i-1].cells[7].innerHTML=data1['Countries'][i-1]['TotalRecovered'];
+                        
+                        
+                        
+                    }
+                }
+                )
+               
+            }
+
+        </script>
+        <script>
+            $(document).ready(function(){
+                $("#search1").click(function(){
+                    var value=$("#search").val().toLowerCase();
+                    $("#table2 tr").filter(function(){
+                       $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1); 
+                    });
+                });
+            });
+        </script>
+   
+    </body>
+</html>
